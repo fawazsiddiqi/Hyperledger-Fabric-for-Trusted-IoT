@@ -3,7 +3,7 @@
         "id": "ef8ecd0f.061f2",
         "type": "tab",
         "label": "Dashboard",
-        "disabled": true,
+        "disabled": false,
         "info": ""
     },
     {
@@ -156,8 +156,10 @@
         "type": "debug",
         "z": "ef8ecd0f.061f2",
         "name": "myName",
-        "active": false,
+        "active": true,
         "tosidebar": true,
+        "console": false,
+        "tostatus": false,
         "complete": "payload.d.myName",
         "x": 440,
         "y": 180,
@@ -168,7 +170,7 @@
         "type": "debug",
         "z": "ef8ecd0f.061f2",
         "name": "ambientTemp",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -182,7 +184,7 @@
         "type": "function",
         "z": "ef8ecd0f.061f2",
         "name": "Body / Headers",
-        "func": "temp = msg.payload.d.ambientTemp;\n\nvar date = new Date();\nvar options = { timeZone: 'Europe/Istanbul', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };\nvar time = date.toLocaleDateString('tr-TR', options);\n\n\nmsg.payload = {'username':'user1','channel':'channel1', 'smartcontract':'cc', 'args': {'sensorID':'sensor1', 'temp':temp,'time':time} };\nmsg.headers = {'content-type':'application/json'};\n\nreturn msg;",
+        "func": "temp = msg.payload.d.ambientTemp;\n\nvar date = new Date();\nvar options = { timeZone: 'Europe/Istanbul', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };\nvar time = date.toLocaleDateString('tr-TR', options);\n\n\nmsg.payload = {'username':'user6','channel':'channel1', 'smartcontract':'cc', 'args': {'sensorID':'sensor6', 'temp':temp,'time':time} };\nmsg.headers = {'content-type':'application/json'};\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "x": 500,
@@ -255,8 +257,8 @@
         "ret": "txt",
         "url": "http://rest-api:3000/api/getHistory",
         "tls": "",
-        "x": 600,
-        "y": 600,
+        "x": 560,
+        "y": 840,
         "wires": [
             [
                 "9a5e94e0.ecc0f8"
@@ -271,8 +273,8 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 840,
-        "y": 600,
+        "x": 800,
+        "y": 840,
         "wires": [
             [
                 "32b8f481.975f6c",
@@ -290,8 +292,8 @@
         "console": false,
         "tostatus": false,
         "complete": "payload",
-        "x": 1010,
-        "y": 600,
+        "x": 1050,
+        "y": 660,
         "wires": []
     },
     {
@@ -304,8 +306,9 @@
         "format": "html",
         "syntax": "mustache",
         "template": "table {\n    color: #333;\n    font-family: Helvetica, Arial, sans-serif;\n    width: 100%;\n    border-collapse: collapse;\n    border-spacing: 0;\n}\ntd, th {\n    border: 1px solid transparent;\n    /* No more visible border */\n    height: 30px;\n    transition: all 0.3s;\n    /* Simple transition for hover effect */\n}\nth {\n    background: #DFDFDF;\n    /* Darken header a bit */\n    font-weight: bold;\n}\ntd {\n    background: #FAFAFA;\n    text-align: center;\n}\n\n/* Cells in even rows (2,4,6...) are one color */\n\ntr:nth-child(even) td {\n    background: #F1F1F1;\n}\n\n/* Cells in odd rows (1,3,5...) are another (excludes header cells)  */\n\ntr:nth-child(odd) td {\n    background: #FEFEFE;\n}\ntr td:hover {\n    background: #666;\n    color: #FFF;\n}\n\n/* Hover cell effect! */",
-        "x": 840,
-        "y": 660,
+        "output": "str",
+        "x": 800,
+        "y": 900,
         "wires": [
             [
                 "3b4f2b1f.83f294"
@@ -317,11 +320,11 @@
         "type": "function",
         "z": "ef8ecd0f.061f2",
         "name": "Body / Headers",
-        "func": "msg.payload = {'username':'user1','channel':'channel1', 'smartcontract':'cc', \"args\": {\"sensorID\":\"sensor1\"} };\nmsg.headers = {'content-type':'application/json'};\n\nreturn msg;",
+        "func": "msg.payload = {'username':'user6','channel':'channel1', 'smartcontract':'cc', \"args\": {\"sensorID\":\"sensor6\"} };\nmsg.headers = {'content-type':'application/json'};\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 360,
-        "y": 600,
+        "x": 320,
+        "y": 840,
         "wires": [
             [
                 "e8835518.d87778"
@@ -417,7 +420,7 @@
         "type": "function",
         "z": "cac464ba.946338",
         "name": "Body / Headers",
-        "func": "msg.payload = {\"adminName\": \"admin\", \"username\":\"user1\"};\nmsg.headers = {'content-type':'application/json'};\n\nreturn msg;",
+        "func": "msg.payload = {\"adminName\": \"admin\", \"username\":\"user6\"};\nmsg.headers = {'content-type':'application/json'};\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "x": 320,
@@ -484,7 +487,7 @@
         "type": "function",
         "z": "cac464ba.946338",
         "name": "Body / Headers",
-        "func": "msg.payload = {\"username\": \"user1\", \"channel\":\"channel1\", \"smartcontract\":\"cc\", \"args\":{\"sensorID\": \"sensor1\"} }\nmsg.headers = {'content-type':'application/json'};\n\nreturn msg;",
+        "func": "msg.payload = {\"username\": \"user6\", \"channel\":\"channel1\", \"smartcontract\":\"cc\", \"args\":{\"sensorID\": \"sensor6\"} }\nmsg.headers = {'content-type':'application/json'};\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "x": 320,
@@ -547,39 +550,13 @@
         "payload": "",
         "payloadType": "str",
         "topic": "",
-        "x": 170,
-        "y": 600,
+        "x": 130,
+        "y": 840,
         "wires": [
             [
                 "4e906d23.8ba164"
             ]
         ]
-    },
-    {
-        "id": "45fe4a45.37ca34",
-        "type": "ui_gauge",
-        "z": "ef8ecd0f.061f2",
-        "name": "",
-        "group": "fdad0cfd.dd9c2",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "gtype": "gage",
-        "title": "Temperature",
-        "label": "°C",
-        "format": "{{msg.payload.d.ambientTemp}}",
-        "min": 0,
-        "max": "50",
-        "colors": [
-            "#00b500",
-            "#e6e600",
-            "#ca3838"
-        ],
-        "seg1": "",
-        "seg2": "",
-        "x": 450,
-        "y": 140,
-        "wires": []
     },
     {
         "id": "f1ee9b8d.be62b8",
@@ -604,14 +581,14 @@
         "group": "5721af64.a940a",
         "name": "Table",
         "order": 1,
-        "width": "20",
-        "height": "13",
+        "width": "0",
+        "height": "0",
         "format": "<style>\n    {{msg.style}}\n</style>\n\n<table>\n  <thead>\n    <tr>\n      <th scope=\"col\">TxId</th>\n      <th scope=\"col\">SensorID</th>\n      <th scope=\"col\">Time</th>\n      <th scope=\"col\">Temp</th>\n    </tr>\n  </thead>\n  \n  <tr ng-repeat=\"obj in msg.payload\">\n    <td>{{ obj.TxId }}</td>\n    <td>{{ obj.Value.sensorID }}</td>\n    <td>{{ obj.Value.time }}</td>\n    <td>{{ obj.Value.temp }}</td>\n  </tr>\n</table>",
         "storeOutMessages": false,
         "fwdInMessages": true,
         "templateScope": "local",
-        "x": 1010,
-        "y": 660,
+        "x": 1050,
+        "y": 720,
         "wires": [
             []
         ]
@@ -647,7 +624,9 @@
             [
                 "4a7b6860.4aa6f8",
                 "c18c6c89.6a5f7",
-                "29e3b07.e38705"
+                "29e3b07.e38705",
+                "86ec24f0.454658",
+                "f02b7ad3.d7b468"
             ]
         ]
     },
@@ -667,8 +646,8 @@
         "z": "ef8ecd0f.061f2",
         "name": "If you can't provide sensor, get the data from above generator",
         "info": "",
-        "x": 220,
-        "y": 440,
+        "x": 940,
+        "y": 540,
         "wires": []
     },
     {
@@ -680,7 +659,7 @@
         "fieldType": "msg",
         "syntax": "text",
         "template": "{\"d\":{\"ambientTemp\": \"{{float -10 40 '0.00'}}\" }}",
-        "x": 300,
+        "x": 320,
         "y": 400,
         "wires": [
             [
@@ -696,15 +675,17 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "repeat": "5",
+        "repeat": "10",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
-        "x": 130,
+        "x": 110,
         "y": 400,
         "wires": [
             [
-                "715e8e26.e5651"
+                "715e8e26.e5651",
+                "92b8f5be.4cd9b8",
+                "92026e12.574e1"
             ]
         ]
     },
@@ -750,5 +731,299 @@
         "x": 630,
         "y": 400,
         "wires": []
+    },
+    {
+        "id": "478c69c4.aa9f88",
+        "type": "ui_template",
+        "z": "ef8ecd0f.061f2",
+        "group": "fdad0cfd.dd9c2",
+        "name": "",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "format": "<html>  \n<head>\n<meta name=\"viewport\" content=\"initial-scale=1.0, width=device-width\" />\n<script src=\"https://js.api.here.com/v3/3.1/mapsjs-core.js\" type=\"text/javascript\" charset=\"utf-8\"></script>\n<script src=\"https://js.api.here.com/v3/3.1/mapsjs-service.js\" type=\"text/javascript\" charset=\"utf-8\"></script>\n</head>\n  \n<body style='margin: 0'>\n<div ng-bind-html=\"msg.payload\" style=\"width: 100%; height: 100%\" id=\"mapContainer\"></div>\n\n<script>\t\n      // Initialize the platform object:\n      var platform = new H.service.Platform({\n        'apikey': 'F_bp_TDIS2TLsLEZZjCE4vCSKxXW9tJwhnQK_3cuWwU'\n      });\n\t  \n\t   const lat = 1.29041;\n\t   //22.719568;\n\t   const long = 103.85211;\n\t   //75.857727;\n\t\n\t// Obtain the default map types from the platform object\n      var maptypes = platform.createDefaultLayers();\n\n      // Instantiate (and display) a map object:\n      var map = new H.Map(\n        document.getElementById('mapContainer'),\n        maptypes.vector.normal.map,\n        {\n          zoom: 15,\n          center: { lat: lat, lng: long }  \n        });\n</script>\n</body>\n</html>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "templateScope": "local",
+        "x": 460,
+        "y": 920,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8aabdfcf.dbb9a",
+        "type": "comment",
+        "z": "ef8ecd0f.061f2",
+        "name": "Generating random lat-lng data",
+        "info": "",
+        "x": 850,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "92b8f5be.4cd9b8",
+        "type": "data-generator",
+        "z": "ef8ecd0f.061f2",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "syntax": "text",
+        "template": "{\"d\":{\"randomLat\": \"{{float 12 13 '0.00'}}\" }}",
+        "x": 320,
+        "y": 480,
+        "wires": [
+            [
+                "f926d9b.fcc8e28"
+            ]
+        ]
+    },
+    {
+        "id": "f926d9b.fcc8e28",
+        "type": "json",
+        "z": "ef8ecd0f.061f2",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 480,
+        "y": 480,
+        "wires": [
+            [
+                "d5e8abe1.1d5068",
+                "da8a84e7.d89af8"
+            ]
+        ]
+    },
+    {
+        "id": "d5e8abe1.1d5068",
+        "type": "ui_gauge",
+        "z": "ef8ecd0f.061f2",
+        "name": "",
+        "group": "fdad0cfd.dd9c2",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "compass",
+        "title": "Latitude",
+        "label": "Value",
+        "format": "{{msg.payload.d.randomLat}}",
+        "min": "10",
+        "max": "15",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 640,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "86ec24f0.454658",
+        "type": "debug",
+        "z": "ef8ecd0f.061f2",
+        "name": "randomLng",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload.d.randomLng",
+        "x": 450,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "f7f135c0.998d08",
+        "type": "ui_gauge",
+        "z": "ef8ecd0f.061f2",
+        "name": "",
+        "group": "fdad0cfd.dd9c2",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "compass",
+        "title": "Longitude",
+        "label": "Value",
+        "format": "{{msg.payload.d.randomLng}}",
+        "min": "75",
+        "max": "80",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 640,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "f02b7ad3.d7b468",
+        "type": "debug",
+        "z": "ef8ecd0f.061f2",
+        "name": "randomLat",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload.d.randomLat",
+        "x": 450,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "92026e12.574e1",
+        "type": "data-generator",
+        "z": "ef8ecd0f.061f2",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "syntax": "text",
+        "template": "{\"d\":{\"randomLng\": \"{{float 77 78 '0.00'}}\" }}",
+        "x": 320,
+        "y": 540,
+        "wires": [
+            [
+                "5146f740.3185f8"
+            ]
+        ]
+    },
+    {
+        "id": "5146f740.3185f8",
+        "type": "json",
+        "z": "ef8ecd0f.061f2",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 480,
+        "y": 540,
+        "wires": [
+            [
+                "f7f135c0.998d08",
+                "3ef9b49d.d4e90c"
+            ]
+        ]
+    },
+    {
+        "id": "1286fc9d.f8ff53",
+        "type": "comment",
+        "z": "ef8ecd0f.061f2",
+        "name": "Showing map in </> template",
+        "info": "",
+        "x": 1160,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "adc7fdbd.1fd65",
+        "type": "http in",
+        "z": "ef8ecd0f.061f2",
+        "name": "",
+        "url": "/map",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 140,
+        "y": 780,
+        "wires": [
+            [
+                "4cdf77bd.c90df8"
+            ]
+        ]
+    },
+    {
+        "id": "851cae5b.3a76c",
+        "type": "http response",
+        "z": "ef8ecd0f.061f2",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 530,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "da8a84e7.d89af8",
+        "type": "function",
+        "z": "ef8ecd0f.061f2",
+        "name": "Latitude",
+        "func": "lat = msg.payload.d.randomLat;\n\nmsg.payload = {'lat':lat};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 180,
+        "y": 600,
+        "wires": [
+            [
+                "85ba5b6c.4ca098"
+            ]
+        ]
+    },
+    {
+        "id": "85ba5b6c.4ca098",
+        "type": "debug",
+        "z": "ef8ecd0f.061f2",
+        "name": "TEST Lat",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 860,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "3ef9b49d.d4e90c",
+        "type": "function",
+        "z": "ef8ecd0f.061f2",
+        "name": "Longitude",
+        "func": "lng = msg.payload.d.randomLng;\n\nmsg.payload = {'lng':lng};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 180,
+        "y": 640,
+        "wires": [
+            [
+                "97759e93.e13f3"
+            ]
+        ]
+    },
+    {
+        "id": "97759e93.e13f3",
+        "type": "debug",
+        "z": "ef8ecd0f.061f2",
+        "name": "TEST Lng",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 860,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "4cdf77bd.c90df8",
+        "type": "template",
+        "z": "ef8ecd0f.061f2",
+        "name": "HERE Map",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<!DOCTYPE html>\n<html>\n    <head>\n        <title>Routing to Hospital</title>\n        <!-- SCRIPTS -->\n        <meta name=\"viewport\" charset=\"UTF-8\" content=\"initial-scale=1.0, width=device-width\" />\n        <script type=\"text/javascript\" src=\"https://js.api.here.com/v3/3.1/mapsjs-core.js\"></script>\n        <script type=\"text/javascript\" src=\"https://js.api.here.com/v3/3.1/mapsjs-service.js\"></script>\n        <script type=\"text/javascript\" src=\"https://js.api.here.com/v3/3.1/mapsjs-ui.js\"></script>\n        <script type=\"text/javascript\" src=\"https://js.api.here.com/v3/3.1/mapsjs-mapevents.js\"></script>\n        <link rel=\"stylesheet\" type=\"text/css\" href=\"https://js.api.here.com/v3/3.1/mapsjs-ui.css\"/>\n    </head>\n       <body>\n        <div id=\"mapContainer\" style=\"width: 95vw; height: 80vh; display: block; margin: 0 auto; border: solid 2px black; margin-top: 10px;\" > </div>\n    </body>\n    <script>\n        var platform = new H.service.Platform({\n            apikey: \"WEZsXlgadF5ZhPtPTsvYhuuSGSUoIt2mnR3orK5MxSU\"   \n        });\n\n\t\tconst lat = 12.95677;\n\t    const lng = 77.73164;\n\n        // Obtain the default map types from the platform object:\n        var defaultLayers = platform.createDefaultLayers();\n\n        // Your current position\n        var myPosition = {lat: lat, lng: lng};\n\n        // Instantiate (and display) a map object:\n        var map = new H.Map(\n            document.getElementById('mapContainer'),\n            defaultLayers.vector.normal.map,\n            {\n                zoom: 14,\n                center: myPosition\n            });\n\n        var ui = H.ui.UI.createDefault(map, defaultLayers, 'en-US');\n\n        var mapEvents = new H.mapevents.MapEvents(map);\n        var behavior = new H.mapevents.Behavior(mapEvents);\n\nconst marker = new H.map.Marker({lat: lat, lng: lng});\n\t  map.addObject(marker);\n\n\n\nmarker.addEventListener('tap', function(evt) {\n    \n\t\t// Create an info bubble object at a specific geographic location:\n\t\tvar bubble = new H.ui.InfoBubble({ lng: lng, lat: lat }, {\n                content: '<p> \"Temperature\"</p>'\n             });\n\n\t\t// Add info bubble to the UI:\n\t\tui.addBubble(bubble);\n\t});\t\n\n</script>\n</html>",
+        "output": "str",
+        "x": 330,
+        "y": 780,
+        "wires": [
+            [
+                "851cae5b.3a76c"
+            ]
+        ]
     }
 ]
