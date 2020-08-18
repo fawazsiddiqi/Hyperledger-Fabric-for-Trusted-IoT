@@ -54,7 +54,7 @@ $ ibmcloud --version
 Clone this repository in a folder your choice:
 
 ```bash
-$ git clone https://github.com/yigitpolat/Hyperledger-IoT
+$ git clone https://github.com/fawazsiddiqi/Hyperledger-Fabric-for-Trusted-IoT
 $ cd Hyperledger-IoT
 ```
 
