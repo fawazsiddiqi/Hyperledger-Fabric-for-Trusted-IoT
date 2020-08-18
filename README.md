@@ -1,5 +1,8 @@
 # Hyperledger Fabric for Trusted IoT
 
+#### Sign up for IBM Cloud at https://ibm.biz/HERETechnologies
+#### Get your HERE API Key at https://developer.here.com
+
 ## Architecture Flow
 
 <p align="center"><img src="docs/architecture.png"></p>
